@@ -100,24 +100,167 @@ func (m *HelloReply) GetMessage() string {
 	return ""
 }
 
+type Cmd struct {
+	Path                 string   `protobuf:"bytes,1,opt,name=Path,proto3" json:"Path,omitempty"`
+	Args                 []string `protobuf:"bytes,2,rep,name=Args,proto3" json:"Args,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Cmd) Reset()         { *m = Cmd{} }
+func (m *Cmd) String() string { return proto.CompactTextString(m) }
+func (*Cmd) ProtoMessage()    {}
+func (*Cmd) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25aad4dd9fba5e54, []int{2}
+}
+
+func (m *Cmd) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Cmd.Unmarshal(m, b)
+}
+func (m *Cmd) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Cmd.Marshal(b, m, deterministic)
+}
+func (m *Cmd) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Cmd.Merge(m, src)
+}
+func (m *Cmd) XXX_Size() int {
+	return xxx_messageInfo_Cmd.Size(m)
+}
+func (m *Cmd) XXX_DiscardUnknown() {
+	xxx_messageInfo_Cmd.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Cmd proto.InternalMessageInfo
+
+func (m *Cmd) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
+func (m *Cmd) GetArgs() []string {
+	if m != nil {
+		return m.Args
+	}
+	return nil
+}
+
+type ExecRequest struct {
+	Cmd                  *Cmd     `protobuf:"bytes,1,opt,name=cmd,proto3" json:"cmd,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ExecRequest) Reset()         { *m = ExecRequest{} }
+func (m *ExecRequest) String() string { return proto.CompactTextString(m) }
+func (*ExecRequest) ProtoMessage()    {}
+func (*ExecRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25aad4dd9fba5e54, []int{3}
+}
+
+func (m *ExecRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExecRequest.Unmarshal(m, b)
+}
+func (m *ExecRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExecRequest.Marshal(b, m, deterministic)
+}
+func (m *ExecRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExecRequest.Merge(m, src)
+}
+func (m *ExecRequest) XXX_Size() int {
+	return xxx_messageInfo_ExecRequest.Size(m)
+}
+func (m *ExecRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExecRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ExecRequest proto.InternalMessageInfo
+
+func (m *ExecRequest) GetCmd() *Cmd {
+	if m != nil {
+		return m.Cmd
+	}
+	return nil
+}
+
+type ExecReply struct {
+	Stdout               []byte   `protobuf:"bytes,1,opt,name=Stdout,proto3" json:"Stdout,omitempty"`
+	Stderr               []byte   `protobuf:"bytes,2,opt,name=Stderr,proto3" json:"Stderr,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ExecReply) Reset()         { *m = ExecReply{} }
+func (m *ExecReply) String() string { return proto.CompactTextString(m) }
+func (*ExecReply) ProtoMessage()    {}
+func (*ExecReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25aad4dd9fba5e54, []int{4}
+}
+
+func (m *ExecReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExecReply.Unmarshal(m, b)
+}
+func (m *ExecReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExecReply.Marshal(b, m, deterministic)
+}
+func (m *ExecReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExecReply.Merge(m, src)
+}
+func (m *ExecReply) XXX_Size() int {
+	return xxx_messageInfo_ExecReply.Size(m)
+}
+func (m *ExecReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExecReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ExecReply proto.InternalMessageInfo
+
+func (m *ExecReply) GetStdout() []byte {
+	if m != nil {
+		return m.Stdout
+	}
+	return nil
+}
+
+func (m *ExecReply) GetStderr() []byte {
+	if m != nil {
+		return m.Stderr
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*HelloRequest)(nil), "umedago.HelloRequest")
 	proto.RegisterType((*HelloReply)(nil), "umedago.HelloReply")
+	proto.RegisterType((*Cmd)(nil), "umedago.Cmd")
+	proto.RegisterType((*ExecRequest)(nil), "umedago.ExecRequest")
+	proto.RegisterType((*ExecReply)(nil), "umedago.ExecReply")
 }
 
 func init() { proto.RegisterFile("umedago.proto", fileDescriptor_25aad4dd9fba5e54) }
 
 var fileDescriptor_25aad4dd9fba5e54 = []byte{
-	// 142 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2d, 0xcd, 0x4d, 0x4d,
-	0x49, 0x4c, 0xcf, 0xd7, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x87, 0x72, 0x95, 0x94, 0xb8,
-	0x78, 0x3c, 0x52, 0x73, 0x72, 0xf2, 0x83, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b, 0x84, 0x84, 0xb8,
-	0x58, 0xf2, 0x12, 0x73, 0x53, 0x25, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0xc0, 0x6c, 0x25, 0x35,
-	0x2e, 0x2e, 0xa8, 0x9a, 0x82, 0x9c, 0x4a, 0x21, 0x09, 0x2e, 0xf6, 0xdc, 0xd4, 0xe2, 0xe2, 0xc4,
-	0x74, 0x98, 0x22, 0x18, 0xd7, 0xc8, 0x95, 0x8b, 0xd3, 0xbd, 0xa8, 0x20, 0x39, 0xa9, 0x34, 0x33,
-	0x27, 0x45, 0xc8, 0x82, 0x8b, 0x23, 0x38, 0xb1, 0x12, 0xac, 0x4f, 0x48, 0x54, 0x0f, 0x66, 0x3b,
-	0xb2, 0x5d, 0x52, 0xc2, 0xe8, 0xc2, 0x05, 0x39, 0x95, 0x4a, 0x0c, 0x49, 0x6c, 0x60, 0x27, 0x1a,
-	0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0xbd, 0x8d, 0xc0, 0x93, 0xb3, 0x00, 0x00, 0x00,
+	// 250 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x90, 0xcf, 0x4e, 0xc3, 0x30,
+	0x0c, 0xc6, 0xd9, 0x3a, 0x6d, 0xd4, 0x2b, 0x17, 0xf3, 0x47, 0xd5, 0x0e, 0x68, 0xca, 0x01, 0x71,
+	0xd9, 0x0e, 0xe5, 0x82, 0xc4, 0x09, 0x4d, 0x08, 0x8e, 0xa8, 0x7b, 0x82, 0xac, 0xb1, 0x0a, 0x52,
+	0x42, 0x4a, 0x9a, 0x4a, 0xf4, 0xed, 0x91, 0xb3, 0xa6, 0x9a, 0x76, 0xb3, 0x7f, 0xfe, 0x6c, 0x7f,
+	0x36, 0x5c, 0x75, 0x86, 0x94, 0xac, 0xed, 0xb6, 0x71, 0xd6, 0x5b, 0x5c, 0x0c, 0xa9, 0x10, 0x90,
+	0x7d, 0x90, 0xd6, 0xb6, 0xa4, 0xdf, 0x8e, 0x5a, 0x8f, 0x08, 0xb3, 0x1f, 0x69, 0x28, 0x9f, 0xac,
+	0x27, 0x8f, 0x69, 0x19, 0x62, 0xf1, 0x00, 0x30, 0x68, 0x1a, 0xdd, 0x63, 0x0e, 0x0b, 0x43, 0x6d,
+	0x2b, 0xeb, 0x28, 0x8a, 0xa9, 0xd8, 0x40, 0xb2, 0x33, 0x8a, 0x47, 0x7c, 0x4a, 0xff, 0x15, 0x47,
+	0x70, 0xcc, 0xec, 0xd5, 0xd5, 0x6d, 0x3e, 0x5d, 0x27, 0xcc, 0x38, 0x16, 0x1b, 0x58, 0xbe, 0xfd,
+	0x51, 0x15, 0x37, 0xdf, 0x43, 0x52, 0x19, 0x15, 0xba, 0x96, 0x45, 0xb6, 0x8d, 0x7e, 0x77, 0x46,
+	0x95, 0x5c, 0x10, 0x2f, 0x90, 0x1e, 0xe5, 0x6c, 0xe2, 0x0e, 0xe6, 0x7b, 0xaf, 0x6c, 0xe7, 0x83,
+	0x3e, 0x2b, 0x87, 0x6c, 0xe0, 0xe4, 0x5c, 0x3e, 0x1d, 0x39, 0x39, 0x57, 0xf4, 0x90, 0xbe, 0xbb,
+	0xa6, 0x3a, 0x74, 0xdf, 0x5a, 0xe1, 0x33, 0x5c, 0xee, 0x65, 0x1f, 0x4e, 0xc2, 0xdb, 0x71, 0xd1,
+	0xe9, 0x1b, 0x56, 0xd7, 0xe7, 0xb8, 0xd1, 0xbd, 0xb8, 0xc0, 0x02, 0x66, 0xec, 0x01, 0x6f, 0xc6,
+	0xf2, 0xc9, 0x05, 0x2b, 0x3c, 0xa3, 0xa1, 0xe7, 0x30, 0x0f, 0x1f, 0x7f, 0xfa, 0x0f, 0x00, 0x00,
+	0xff, 0xff, 0xbc, 0xce, 0x39, 0x55, 0x82, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -133,6 +276,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GrpcbuildClient interface {
 	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+	Exec(ctx context.Context, in *ExecRequest, opts ...grpc.CallOption) (*ExecReply, error)
 }
 
 type grpcbuildClient struct {
@@ -152,9 +296,19 @@ func (c *grpcbuildClient) SayHello(ctx context.Context, in *HelloRequest, opts .
 	return out, nil
 }
 
+func (c *grpcbuildClient) Exec(ctx context.Context, in *ExecRequest, opts ...grpc.CallOption) (*ExecReply, error) {
+	out := new(ExecReply)
+	err := c.cc.Invoke(ctx, "/umedago.Grpcbuild/Exec", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GrpcbuildServer is the server API for Grpcbuild service.
 type GrpcbuildServer interface {
 	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
+	Exec(context.Context, *ExecRequest) (*ExecReply, error)
 }
 
 func RegisterGrpcbuildServer(s *grpc.Server, srv GrpcbuildServer) {
@@ -179,6 +333,24 @@ func _Grpcbuild_SayHello_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Grpcbuild_Exec_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExecRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GrpcbuildServer).Exec(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/umedago.Grpcbuild/Exec",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GrpcbuildServer).Exec(ctx, req.(*ExecRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Grpcbuild_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "umedago.Grpcbuild",
 	HandlerType: (*GrpcbuildServer)(nil),
@@ -186,6 +358,10 @@ var _Grpcbuild_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SayHello",
 			Handler:    _Grpcbuild_SayHello_Handler,
+		},
+		{
+			MethodName: "Exec",
+			Handler:    _Grpcbuild_Exec_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

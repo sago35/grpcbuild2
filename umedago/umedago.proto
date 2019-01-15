@@ -4,6 +4,7 @@ package umedago;
 
 service Grpcbuild {
     rpc SayHello (HelloRequest) returns (HelloReply) {}
+    rpc Exec (ExecRequest) returns (ExecReply) {}
 }
 
 message HelloRequest {
@@ -12,4 +13,18 @@ message HelloRequest {
 
 message HelloReply {
     string message = 1;
+}
+
+message Cmd {
+    string Path = 1;
+    repeated string Args = 2;
+}
+
+message ExecRequest {
+    Cmd cmd = 1;
+}
+
+message ExecReply {
+    bytes Stdout = 1;
+    bytes Stderr = 2;
 }
