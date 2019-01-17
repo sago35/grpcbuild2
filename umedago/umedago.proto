@@ -5,6 +5,8 @@ package umedago;
 service Grpcbuild {
     rpc SayHello (HelloRequest) returns (HelloReply) {}
     rpc Exec (ExecRequest) returns (ExecReply) {}
+    rpc Send (SendRequest) returns (SendReply) {}
+    rpc Recv (RecvRequest) returns (RecvReply) {}
 }
 
 message HelloRequest {
@@ -27,4 +29,24 @@ message ExecRequest {
 message ExecReply {
     bytes Stdout = 1;
     bytes Stderr = 2;
+}
+
+message File {
+    string Filename = 1;
+    bytes Data = 2;
+}
+
+message SendRequest {
+    repeated File Files = 1;
+}
+
+message SendReply {
+}
+
+message RecvRequest {
+    repeated string Files = 1;
+}
+
+message RecvReply {
+    repeated File Files = 1;
 }

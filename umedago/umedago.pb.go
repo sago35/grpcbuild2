@@ -233,34 +233,240 @@ func (m *ExecReply) GetStderr() []byte {
 	return nil
 }
 
+type File struct {
+	Filename             string   `protobuf:"bytes,1,opt,name=Filename,proto3" json:"Filename,omitempty"`
+	Data                 []byte   `protobuf:"bytes,2,opt,name=Data,proto3" json:"Data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *File) Reset()         { *m = File{} }
+func (m *File) String() string { return proto.CompactTextString(m) }
+func (*File) ProtoMessage()    {}
+func (*File) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25aad4dd9fba5e54, []int{5}
+}
+
+func (m *File) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_File.Unmarshal(m, b)
+}
+func (m *File) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_File.Marshal(b, m, deterministic)
+}
+func (m *File) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_File.Merge(m, src)
+}
+func (m *File) XXX_Size() int {
+	return xxx_messageInfo_File.Size(m)
+}
+func (m *File) XXX_DiscardUnknown() {
+	xxx_messageInfo_File.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_File proto.InternalMessageInfo
+
+func (m *File) GetFilename() string {
+	if m != nil {
+		return m.Filename
+	}
+	return ""
+}
+
+func (m *File) GetData() []byte {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type SendRequest struct {
+	Files                []*File  `protobuf:"bytes,1,rep,name=Files,proto3" json:"Files,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SendRequest) Reset()         { *m = SendRequest{} }
+func (m *SendRequest) String() string { return proto.CompactTextString(m) }
+func (*SendRequest) ProtoMessage()    {}
+func (*SendRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25aad4dd9fba5e54, []int{6}
+}
+
+func (m *SendRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SendRequest.Unmarshal(m, b)
+}
+func (m *SendRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SendRequest.Marshal(b, m, deterministic)
+}
+func (m *SendRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SendRequest.Merge(m, src)
+}
+func (m *SendRequest) XXX_Size() int {
+	return xxx_messageInfo_SendRequest.Size(m)
+}
+func (m *SendRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SendRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SendRequest proto.InternalMessageInfo
+
+func (m *SendRequest) GetFiles() []*File {
+	if m != nil {
+		return m.Files
+	}
+	return nil
+}
+
+type SendReply struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SendReply) Reset()         { *m = SendReply{} }
+func (m *SendReply) String() string { return proto.CompactTextString(m) }
+func (*SendReply) ProtoMessage()    {}
+func (*SendReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25aad4dd9fba5e54, []int{7}
+}
+
+func (m *SendReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SendReply.Unmarshal(m, b)
+}
+func (m *SendReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SendReply.Marshal(b, m, deterministic)
+}
+func (m *SendReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SendReply.Merge(m, src)
+}
+func (m *SendReply) XXX_Size() int {
+	return xxx_messageInfo_SendReply.Size(m)
+}
+func (m *SendReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_SendReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SendReply proto.InternalMessageInfo
+
+type RecvRequest struct {
+	Files                []string `protobuf:"bytes,1,rep,name=Files,proto3" json:"Files,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RecvRequest) Reset()         { *m = RecvRequest{} }
+func (m *RecvRequest) String() string { return proto.CompactTextString(m) }
+func (*RecvRequest) ProtoMessage()    {}
+func (*RecvRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25aad4dd9fba5e54, []int{8}
+}
+
+func (m *RecvRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RecvRequest.Unmarshal(m, b)
+}
+func (m *RecvRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RecvRequest.Marshal(b, m, deterministic)
+}
+func (m *RecvRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RecvRequest.Merge(m, src)
+}
+func (m *RecvRequest) XXX_Size() int {
+	return xxx_messageInfo_RecvRequest.Size(m)
+}
+func (m *RecvRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RecvRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RecvRequest proto.InternalMessageInfo
+
+func (m *RecvRequest) GetFiles() []string {
+	if m != nil {
+		return m.Files
+	}
+	return nil
+}
+
+type RecvReply struct {
+	Files                []*File  `protobuf:"bytes,1,rep,name=Files,proto3" json:"Files,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *RecvReply) Reset()         { *m = RecvReply{} }
+func (m *RecvReply) String() string { return proto.CompactTextString(m) }
+func (*RecvReply) ProtoMessage()    {}
+func (*RecvReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_25aad4dd9fba5e54, []int{9}
+}
+
+func (m *RecvReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RecvReply.Unmarshal(m, b)
+}
+func (m *RecvReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RecvReply.Marshal(b, m, deterministic)
+}
+func (m *RecvReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RecvReply.Merge(m, src)
+}
+func (m *RecvReply) XXX_Size() int {
+	return xxx_messageInfo_RecvReply.Size(m)
+}
+func (m *RecvReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_RecvReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RecvReply proto.InternalMessageInfo
+
+func (m *RecvReply) GetFiles() []*File {
+	if m != nil {
+		return m.Files
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*HelloRequest)(nil), "umedago.HelloRequest")
 	proto.RegisterType((*HelloReply)(nil), "umedago.HelloReply")
 	proto.RegisterType((*Cmd)(nil), "umedago.Cmd")
 	proto.RegisterType((*ExecRequest)(nil), "umedago.ExecRequest")
 	proto.RegisterType((*ExecReply)(nil), "umedago.ExecReply")
+	proto.RegisterType((*File)(nil), "umedago.File")
+	proto.RegisterType((*SendRequest)(nil), "umedago.SendRequest")
+	proto.RegisterType((*SendReply)(nil), "umedago.SendReply")
+	proto.RegisterType((*RecvRequest)(nil), "umedago.RecvRequest")
+	proto.RegisterType((*RecvReply)(nil), "umedago.RecvReply")
 }
 
 func init() { proto.RegisterFile("umedago.proto", fileDescriptor_25aad4dd9fba5e54) }
 
 var fileDescriptor_25aad4dd9fba5e54 = []byte{
-	// 250 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x90, 0xcf, 0x4e, 0xc3, 0x30,
-	0x0c, 0xc6, 0xd9, 0x3a, 0x6d, 0xd4, 0x2b, 0x17, 0xf3, 0x47, 0xd5, 0x0e, 0x68, 0xca, 0x01, 0x71,
-	0xd9, 0x0e, 0xe5, 0x82, 0xc4, 0x09, 0x4d, 0x08, 0x8e, 0xa8, 0x7b, 0x82, 0xac, 0xb1, 0x0a, 0x52,
-	0x42, 0x4a, 0x9a, 0x4a, 0xf4, 0xed, 0x91, 0xb3, 0xa6, 0x9a, 0x76, 0xb3, 0x7f, 0xfe, 0x6c, 0x7f,
-	0x36, 0x5c, 0x75, 0x86, 0x94, 0xac, 0xed, 0xb6, 0x71, 0xd6, 0x5b, 0x5c, 0x0c, 0xa9, 0x10, 0x90,
-	0x7d, 0x90, 0xd6, 0xb6, 0xa4, 0xdf, 0x8e, 0x5a, 0x8f, 0x08, 0xb3, 0x1f, 0x69, 0x28, 0x9f, 0xac,
-	0x27, 0x8f, 0x69, 0x19, 0x62, 0xf1, 0x00, 0x30, 0x68, 0x1a, 0xdd, 0x63, 0x0e, 0x0b, 0x43, 0x6d,
-	0x2b, 0xeb, 0x28, 0x8a, 0xa9, 0xd8, 0x40, 0xb2, 0x33, 0x8a, 0x47, 0x7c, 0x4a, 0xff, 0x15, 0x47,
-	0x70, 0xcc, 0xec, 0xd5, 0xd5, 0x6d, 0x3e, 0x5d, 0x27, 0xcc, 0x38, 0x16, 0x1b, 0x58, 0xbe, 0xfd,
-	0x51, 0x15, 0x37, 0xdf, 0x43, 0x52, 0x19, 0x15, 0xba, 0x96, 0x45, 0xb6, 0x8d, 0x7e, 0x77, 0x46,
-	0x95, 0x5c, 0x10, 0x2f, 0x90, 0x1e, 0xe5, 0x6c, 0xe2, 0x0e, 0xe6, 0x7b, 0xaf, 0x6c, 0xe7, 0x83,
-	0x3e, 0x2b, 0x87, 0x6c, 0xe0, 0xe4, 0x5c, 0x3e, 0x1d, 0x39, 0x39, 0x57, 0xf4, 0x90, 0xbe, 0xbb,
-	0xa6, 0x3a, 0x74, 0xdf, 0x5a, 0xe1, 0x33, 0x5c, 0xee, 0x65, 0x1f, 0x4e, 0xc2, 0xdb, 0x71, 0xd1,
-	0xe9, 0x1b, 0x56, 0xd7, 0xe7, 0xb8, 0xd1, 0xbd, 0xb8, 0xc0, 0x02, 0x66, 0xec, 0x01, 0x6f, 0xc6,
-	0xf2, 0xc9, 0x05, 0x2b, 0x3c, 0xa3, 0xa1, 0xe7, 0x30, 0x0f, 0x1f, 0x7f, 0xfa, 0x0f, 0x00, 0x00,
-	0xff, 0xff, 0xbc, 0xce, 0x39, 0x55, 0x82, 0x01, 0x00, 0x00,
+	// 352 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x4d, 0x4f, 0xc2, 0x40,
+	0x10, 0xa5, 0x14, 0x81, 0x4e, 0xe1, 0xb2, 0xa2, 0x69, 0x38, 0x18, 0xb2, 0x24, 0x86, 0x0b, 0xc4,
+	0xd4, 0xc4, 0x98, 0x78, 0x32, 0xf8, 0x75, 0x34, 0xe5, 0x17, 0x2c, 0xdd, 0x0d, 0x92, 0xb4, 0xb4,
+	0x6e, 0xb7, 0x46, 0x7e, 0xae, 0xff, 0xc4, 0xcc, 0xb6, 0xbb, 0x6e, 0x38, 0x79, 0xea, 0xcc, 0x9b,
+	0xf7, 0x66, 0xdf, 0xcc, 0x14, 0xc6, 0x75, 0x2e, 0x38, 0xdb, 0x15, 0xab, 0x52, 0x16, 0xaa, 0x20,
+	0x83, 0x36, 0xa5, 0x14, 0x46, 0x6f, 0x22, 0xcb, 0x8a, 0x44, 0x7c, 0xd6, 0xa2, 0x52, 0x84, 0x40,
+	0xef, 0xc0, 0x72, 0x11, 0x79, 0x33, 0x6f, 0x11, 0x24, 0x3a, 0xa6, 0xd7, 0x00, 0x2d, 0xa7, 0xcc,
+	0x8e, 0x24, 0x82, 0x41, 0x2e, 0xaa, 0x8a, 0xed, 0x0c, 0xc9, 0xa4, 0x74, 0x09, 0xfe, 0x3a, 0xe7,
+	0xd8, 0xe2, 0x9d, 0xa9, 0x0f, 0xd3, 0x02, 0x63, 0xc4, 0x1e, 0xe5, 0xae, 0x8a, 0xba, 0x33, 0x1f,
+	0x31, 0x8c, 0xe9, 0x12, 0xc2, 0xe7, 0x6f, 0x91, 0x9a, 0x97, 0xaf, 0xc0, 0x4f, 0x73, 0xae, 0x55,
+	0x61, 0x3c, 0x5a, 0x19, 0xbf, 0xeb, 0x9c, 0x27, 0x58, 0xa0, 0x0f, 0x10, 0x34, 0x74, 0x34, 0x71,
+	0x09, 0xfd, 0x8d, 0xe2, 0x45, 0xad, 0x34, 0x7f, 0x94, 0xb4, 0x59, 0x8b, 0x0b, 0x29, 0xa3, 0xae,
+	0xc5, 0x85, 0x94, 0xf4, 0x0e, 0x7a, 0x2f, 0xfb, 0x4c, 0x90, 0x29, 0x0c, 0xf1, 0xeb, 0x8c, 0x68,
+	0x73, 0xf4, 0xf8, 0xc4, 0x14, 0x6b, 0x95, 0x3a, 0xa6, 0x31, 0x84, 0x1b, 0x71, 0xe0, 0xc6, 0xe3,
+	0x1c, 0xce, 0x90, 0x5e, 0x45, 0xde, 0xcc, 0x5f, 0x84, 0xf1, 0xd8, 0xba, 0x44, 0x34, 0x69, 0x6a,
+	0x34, 0x84, 0xa0, 0xd1, 0x94, 0xd9, 0x91, 0xce, 0x21, 0x4c, 0x44, 0xfa, 0x65, 0x1a, 0x4c, 0xdc,
+	0x06, 0x81, 0x51, 0xdc, 0x40, 0xd0, 0x90, 0x70, 0xb4, 0xff, 0xbc, 0x11, 0xff, 0x78, 0x10, 0xbc,
+	0xca, 0x32, 0xdd, 0xd6, 0xfb, 0x8c, 0x93, 0x7b, 0x18, 0x6e, 0xd8, 0x51, 0xdf, 0x88, 0x5c, 0x58,
+	0xbe, 0x7b, 0xd7, 0xe9, 0xf9, 0x29, 0x8c, 0xe6, 0x3a, 0x24, 0x86, 0x1e, 0x2e, 0x95, 0x4c, 0x6c,
+	0xd9, 0x39, 0xc9, 0x94, 0x9c, 0xa0, 0x56, 0x83, 0xf3, 0x39, 0x1a, 0x67, 0x45, 0x8e, 0xe6, 0x6f,
+	0x09, 0x5a, 0x83, 0x13, 0x3a, 0x1a, 0x67, 0x2b, 0x8e, 0xc6, 0xae, 0x81, 0x76, 0xb6, 0x7d, 0xfd,
+	0xab, 0xde, 0xfe, 0x06, 0x00, 0x00, 0xff, 0xff, 0xfe, 0xa6, 0x82, 0x3f, 0xbb, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -277,6 +483,8 @@ const _ = grpc.SupportPackageIsVersion4
 type GrpcbuildClient interface {
 	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
 	Exec(ctx context.Context, in *ExecRequest, opts ...grpc.CallOption) (*ExecReply, error)
+	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendReply, error)
+	Recv(ctx context.Context, in *RecvRequest, opts ...grpc.CallOption) (*RecvReply, error)
 }
 
 type grpcbuildClient struct {
@@ -305,10 +513,30 @@ func (c *grpcbuildClient) Exec(ctx context.Context, in *ExecRequest, opts ...grp
 	return out, nil
 }
 
+func (c *grpcbuildClient) Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendReply, error) {
+	out := new(SendReply)
+	err := c.cc.Invoke(ctx, "/umedago.Grpcbuild/Send", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *grpcbuildClient) Recv(ctx context.Context, in *RecvRequest, opts ...grpc.CallOption) (*RecvReply, error) {
+	out := new(RecvReply)
+	err := c.cc.Invoke(ctx, "/umedago.Grpcbuild/Recv", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GrpcbuildServer is the server API for Grpcbuild service.
 type GrpcbuildServer interface {
 	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
 	Exec(context.Context, *ExecRequest) (*ExecReply, error)
+	Send(context.Context, *SendRequest) (*SendReply, error)
+	Recv(context.Context, *RecvRequest) (*RecvReply, error)
 }
 
 func RegisterGrpcbuildServer(s *grpc.Server, srv GrpcbuildServer) {
@@ -351,6 +579,42 @@ func _Grpcbuild_Exec_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Grpcbuild_Send_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GrpcbuildServer).Send(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/umedago.Grpcbuild/Send",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GrpcbuildServer).Send(ctx, req.(*SendRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Grpcbuild_Recv_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecvRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GrpcbuildServer).Recv(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/umedago.Grpcbuild/Recv",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GrpcbuildServer).Recv(ctx, req.(*RecvRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Grpcbuild_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "umedago.Grpcbuild",
 	HandlerType: (*GrpcbuildServer)(nil),
@@ -362,6 +626,14 @@ var _Grpcbuild_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Exec",
 			Handler:    _Grpcbuild_Exec_Handler,
+		},
+		{
+			MethodName: "Send",
+			Handler:    _Grpcbuild_Send_Handler,
+		},
+		{
+			MethodName: "Recv",
+			Handler:    _Grpcbuild_Recv_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

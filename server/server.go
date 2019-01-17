@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
 	"os/exec"
@@ -42,6 +43,33 @@ func (s *server) Exec(ctx context.Context, in *umedago.ExecRequest) (*umedago.Ex
 		Stdout: stdout.Bytes(),
 		Stderr: stderr.Bytes(),
 	}, nil
+}
+
+func (s *server) Send(ctx context.Context, in *umedago.SendRequest) (*umedago.SendReply, error) {
+	for _, f := range in.GetFiles() {
+		err := ioutil.WriteFile(f.GetFilename(), f.GetData(), 0644)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return &pb.SendReply{}, nil
+}
+
+func (s *server) Recv(ctx context.Context, in *umedago.RecvRequest) (*umedago.RecvReply, error) {
+	files := []*pb.File{}
+
+	for _, f := range in.GetFiles() {
+		b, err := ioutil.ReadFile(f)
+		if err != nil {
+			return nil, err
+		}
+		files = append(files, &pb.File{
+			Filename: f,
+			Data:     b,
+		})
+	}
+
+	return &pb.RecvReply{Files: files}, nil
 }
 
 func main() {
